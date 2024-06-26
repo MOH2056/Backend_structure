@@ -19,4 +19,4 @@ server.post('/login', (req, res) => {
 });
 });
 
-module.exports = usercontrollers;
+module.exports = Usercontrollers;
