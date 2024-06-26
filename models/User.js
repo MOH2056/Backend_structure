@@ -1,4 +1,7 @@
-const mongoose = require(mongoose);
+//importing mongoose
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const loginSchema = new mongoose.Schema({
     Email: {
         type: String,
@@ -16,15 +19,5 @@ const loginSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('User', loginSchema);
-
-User.findOne({ Email: email }, (err, user) => {
-    if (!user) {
-        res.status(401).send('Email not found');
-    } else {if (password === user.password) {
-        res.send('Login successful');
-    } else {
-        res.status(401).send('Incorrect password');
-    }
-}
-});
+const user = mongoose.model('user', loginSchema);
+module.exports = user;
