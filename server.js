@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userroutes');
 
 const server = express();
 const PORT = 5000;
@@ -12,7 +12,11 @@ mongoose.connect('mongodb://localhost:27017/expressAuthRBAC', { useNewUrlParser:
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
-// Use routes
+// Routes
+app.post('/signup', require('./routes/signup'));
+app.get('/confirm/:token', require('./routes/confirm'));
+app.post('/login', require('./routes/login'));
+
 server.use('/api/users', userRoutes);
 
 server.listen(PORT, () => {

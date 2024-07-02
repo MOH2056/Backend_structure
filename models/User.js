@@ -1,17 +1,34 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const nodemailer = require ('nodemailer')
 const loginSchema = new mongoose.Schema({
-    Email: {
+    email: {
         type: String,
         required: true,
         match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
         unique: true,
         minlength: 6,
     },
+    phoneNumber: {
+        type: String,
+        required: true,
+        match: /^\d{10}$/,
+        unique: true,
+    },
     password: {
         type: String,
         required: true,
+    },
+    country: {
+        type: String,
+        required: true,
+    },
+    confirmationTokenExpires: {
+        type: Date,
+    },
+    isConfirmed: {
+        type:Boolean,
+        default: false,
     }
 });
 

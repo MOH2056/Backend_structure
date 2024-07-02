@@ -42,18 +42,3 @@ exports.getUser = async (req, res) => {
         res.status(400).send('Error fetching user: ' + error.message);
     }
 };
-
-// Update and delete handlers should also be implemented similarly
-// exports.updateUser = ... 
-// exports.deleteUser = ...
-        const user = await User.findById(req.params.id);
-        if (!user) return res.status(404).send('User not found');
-        res.send(user);
-    } catch (error) {
-        res.status(400).send('Error fetching user: ' + error.message);
-    }
-};
-
-// Update and delete handlers should also be implemented similarly
-// exports.updateUser = ... 
-// exports.deleteUser = ...
